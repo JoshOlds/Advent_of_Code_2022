@@ -1,0 +1,5 @@
+[workspace]
+members = ["adventlib"]
+
+[profile.release]
+opt-level = 3
