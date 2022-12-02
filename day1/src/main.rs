@@ -37,7 +37,7 @@ fn run(do_print: bool)
     // Get index of max value - used for deleting later
     let index = elf_sum_vector.iter().position(|element| element == max_ref).unwrap();
 
-    if do_print
+    if do_print // Only print on the final run when measuring execution time
     {
         println!("Part 1: The maximum calorie count elf is Elf #{}, and he is carrying {} calories", index, max_ref);
     }

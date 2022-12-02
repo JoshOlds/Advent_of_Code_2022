@@ -10,4 +10,4 @@ All of my 2022 solutions are written in Rust. Rust makes it super easy to build 
 ---
 
 ## Current Execution Times (release build)
-- Day 1: _Coming Soon_
+- Day 1: 68 microseconds
