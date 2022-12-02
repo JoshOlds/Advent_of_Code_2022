@@ -30,7 +30,7 @@ fn run(do_print: bool)
         .collect();
 
     // Find the highest calorie value elf
-    let mut max_ref = elf_sum_vector.iter()
+    let max_ref = elf_sum_vector.iter()
         .max()
         .unwrap();
 
@@ -43,28 +43,16 @@ fn run(do_print: bool)
     }
 
     // Part 2
-    // Max is currently a reference, so let's clone it to a usize so we can add to it
-    let mut max_val = max_ref.clone();
-
-    // Remove previous max elf
-    elf_sum_vector.remove(index);
-
-    // Recalculate max
-    max_ref = elf_sum_vector.iter()
-        .max()
-        .unwrap();
-    let index = elf_sum_vector.iter().position(|element| element == max_ref).unwrap();
-    max_val = max_val + max_ref;
-
-    // One more time... (time to make a function?)
-    elf_sum_vector.remove(index);
-    max_ref = elf_sum_vector.iter()
-        .max()
-        .unwrap();
-    max_val = max_val + max_ref;
+    // Sort the vector, reverse it, take the first three items, and sum them
+    elf_sum_vector.sort_unstable();
+    let max: usize = elf_sum_vector.into_iter().rev().take(3).sum();
 
     if do_print
     {
-        println!("Part 2: The three elves with the most food are carrying {} calories.", max_val);
+        println!("Part 2: The three elves with the most food are carrying {} calories.", max);
     }
+
+
+
+
 }
