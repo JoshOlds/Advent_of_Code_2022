@@ -15,7 +15,7 @@ fn run(do_print: bool)
         // Rust cant iterate over strings, so you must convert to chars explicitly
         let mut chars = line.chars();
         // the call to nth consumes the iterator value, so the second nth call to position 1 actually skips the space and moves on to the second character
-        total_score += evaluate_score(chars.nth(0).unwrap(), chars.nth(1).unwrap());
+        total_score += evaluate_score(&chars.nth(0).unwrap(), &chars.nth(1).unwrap());
     }
 
     if do_print{println!("Part 1 - Total score: {}", total_score)}
@@ -27,13 +27,13 @@ fn run(do_print: bool)
         // Rust cant iterate over strings, so you must convert to chars explicitly
         let mut chars = line.chars();
         // the call to nth consumes the iterator value, so the second nth call to position 1 actually skips the space and moves on to the second character
-        total_score += evaluate_score_part2(chars.nth(0).unwrap(), chars.nth(1).unwrap());
+        total_score += evaluate_score_part2(&chars.nth(0).unwrap(), &chars.nth(1).unwrap());
     }
 
     if do_print{println!("Part 2 - Total score: {}", total_score)}
 }
 
-fn evaluate_score(elf_move: char, player_move: char) -> usize
+fn evaluate_score(elf_move: &char, player_move: &char) -> usize
 {
     let mut score : usize = 0;
     match player_move
@@ -67,7 +67,7 @@ fn evaluate_score(elf_move: char, player_move: char) -> usize
     score
 }
 
-fn evaluate_score_part2(elf_move: char, player_move: char) -> usize
+fn evaluate_score_part2(elf_move: &char, player_move: &char) -> usize
 {
     let mut score : usize = 0;
     match player_move

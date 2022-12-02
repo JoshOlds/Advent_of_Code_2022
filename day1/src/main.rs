@@ -51,8 +51,4 @@ fn run(do_print: bool)
     {
         println!("Part 2: The three elves with the most food are carrying {} calories.", max);
     }
-
-
-
-
 }
