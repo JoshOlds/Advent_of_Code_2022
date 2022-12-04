@@ -12,3 +12,4 @@ All of my 2022 solutions are written in Rust. Rust makes it super easy to build 
 ## Current Execution Times (release build, running on Predator Laptop)
 - Day 1: 68 microseconds
 - Day 2: 90 microseconds
+- Day 3: 93 microseconds
