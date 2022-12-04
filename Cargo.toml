@@ -1,5 +1,5 @@
 [workspace]
-members = ["adventlib", "day1", "day2", "day3"]
+members = ["adventlib", "day1", "day2", "day3", "day4"]
 
 [profile.release]
 opt-level = 3
