@@ -14,3 +14,4 @@ All of my 2022 solutions are written in Rust. Rust makes it super easy to build 
 - Day 2: 90 microseconds
 - Day 3: 93 microseconds
 - Day 4: 140 microseconds
+- day 5: 100 microseconds

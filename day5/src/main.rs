@@ -25,13 +25,14 @@ fn run(do_print: bool)
     let mut lines = input.lines();
 
     // Read the lines that make up the initial stack puzzle input
-    // We will push the lines into a stack to allow us to read it backwards when parsing and creating our numeric stacks
+    // We will push the lines into a vector to allow us to read it backwards when parsing and creating our numeric stacks
     let mut temp_stack: Vec<&str> = Vec::with_capacity(8); // 8 Initial lines
     for _ in  1..=8
     {
         temp_stack.push(lines.next().unwrap());
     }
-    // Iterate over the initial stack values, backwards (by popping the stack)
+
+    // Iterate over the initial stack values, backwards (by popping the vector)
     // Push values into our stacks.
     // I really dislike this wall of match statements, but couldn't come up with a less verbose alternative when dealing with flat stack variables
     for _ in 0..temp_stack.len()
@@ -94,6 +95,9 @@ fn run(do_print: bool)
     stacks.push(stack8);
     stacks.push(stack9);
 
+    // Deep copy the stacks for use in part 2
+    let mut stacks2: Vec<Vec<char>> = stacks.clone();
+
     // Advance the lines pointer to the start of the instructions
     lines.next();
     lines.next();
@@ -112,13 +116,22 @@ fn run(do_print: bool)
         let source_stack_id = words.nth(1).unwrap().parse::<usize>().unwrap();
         let dest_stack_id = words.nth(1).unwrap().parse::<usize>().unwrap();
 
-        // Execute
+        // Execute -- part 1
         for _ in 0..move_amount
         {
-
             let source_stack = stacks.iter_mut().nth(source_stack_id - 1).unwrap();
             let val = source_stack.pop().unwrap();
             let dest_stack = stacks.iter_mut().nth(dest_stack_id - 1).unwrap();
+            dest_stack.push(val);
+        }
+
+        // Execute -- part 2
+        let source_stack = stacks2.iter_mut().nth(source_stack_id - 1).unwrap();
+        let start_idx = source_stack.len() - move_amount;
+        let vals: Vec<char> = source_stack.drain(start_idx..).collect();
+        let dest_stack = stacks2.iter_mut().nth(dest_stack_id - 1).unwrap();
+        for val in vals
+        {
             dest_stack.push(val);
         }
     }
@@ -129,5 +142,11 @@ fn run(do_print: bool)
     {
         top_chars += &*stack.last().unwrap().to_string();
     }
+    let mut top_chars2 = String::new();
+    for stack in stacks2.iter()
+    {
+        top_chars2 += &*stack.last().unwrap().to_string();
+    }
     if do_print {println!("Part 1 - The top values are: {}", top_chars);}
+    if do_print {println!("Part 2 - The top values are: {}", top_chars2);}
 }
