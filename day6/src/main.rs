@@ -2,7 +2,7 @@ use adventlib;
 use rustc_hash::FxHashMap; // Use FxHashMap for faster hashing (Default Rust hashing is secure but slow)
 
 fn main() {
-    adventlib::input_helpers::print_puzzle_header(5);
+    adventlib::input_helpers::print_puzzle_header(6);
     // Measure both parts because part1 is blazing fast and worth mentioning separately
     adventlib::measure_execution_time_ns(part1, 10000);
     adventlib::measure_execution_time_us(part2, 10000);

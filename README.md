@@ -18,3 +18,4 @@ All of my 2022 solutions are written in Rust. Rust makes it super easy to build 
 - Day 6: 
   - Part 1: 1.3 microseconds
   - Part 2: 80 microseconds
+- Day 7: 320 microseconds (Lots of runtime borrow checking, SLOW!)
